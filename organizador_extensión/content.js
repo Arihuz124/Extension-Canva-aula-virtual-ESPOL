@@ -61,7 +61,7 @@
   }
 
   function renderPanel() {
-    panel.innerHTML = "<h3>Mis materias</h3>";
+        panel.innerHTML = '<div id="oe-counter">' + (panel.dataset.txt || "") + '</div><h3>Mis materias</h3>';
 
     const all = document.createElement("div");
     all.className = "oe-row oe-all" + (selected.size === 0 ? " oe-active" : "");
@@ -135,6 +135,16 @@
         (selected.size > 0 && (!c || !selected.has(c.id)));
       wrap.classList.toggle("oe-hide", hideIt);
     });
+        let pending = 0;
+    items.forEach(el => {
+      const box = el.querySelector('input[type="checkbox"]');
+      const wrap = el.closest("li") || el;
+      if (box && !box.checked && !wrap.classList.contains("oe-hide")) pending++;
+    });
+    const txt = pending === 1 ? "Hay 1 tarea pendiente" : `Hay ${pending} tareas pendientes`;
+    panel.dataset.txt = txt;
+    const counter = document.getElementById("oe-counter");
+    if (counter) counter.textContent = txt;
   }
 
   renderPanel();
