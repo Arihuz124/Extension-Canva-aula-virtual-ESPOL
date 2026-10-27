@@ -1,5 +1,5 @@
 #oe-tab {
-  position: fixed; right: 0; top: 190px; z-index: 9999;
+  position: fixed; right: 0; top: 150px; z-index: 9999;
   background: #2d3b45; color: #fff; border: 0; cursor: pointer;
   padding: 18px 9px; min-height: 170px; border-radius: 8px 0 0 8px;
   writing-mode: vertical-rl; font: 600 14px system-ui, sans-serif;
