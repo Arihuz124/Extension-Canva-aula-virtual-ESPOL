@@ -153,7 +153,7 @@
     .observe(document.body, { childList: true, subtree: true });
   apply();
     (async () => {
-    const MAX_CLICKS = 5;
+    const MAX_CLICKS = 5; //valor variable dependiento de cauntos ver mas quieras
     const sleep = ms => new Promise(r => setTimeout(r, ms));
     const findBtn = () => [...document.querySelectorAll("button")]
       .find(b => /cargar más/i.test(b.textContent));
