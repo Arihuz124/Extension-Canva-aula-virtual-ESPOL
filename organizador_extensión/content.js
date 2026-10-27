@@ -146,10 +146,23 @@
     const counter = document.getElementById("oe-counter");
     if (counter) counter.textContent = txt;
   }
-
+  // crear bucle para "ver mas" de tareas
   renderPanel();
   let t;
   new MutationObserver(() => { clearTimeout(t); t = setTimeout(apply, 250); })
     .observe(document.body, { childList: true, subtree: true });
   apply();
+    (async () => {
+    const MAX_CLICKS = 5;
+    const sleep = ms => new Promise(r => setTimeout(r, ms));
+    const findBtn = () => [...document.querySelectorAll("button")]
+      .find(b => /cargar más/i.test(b.textContent));
+    for (let i = 0; i < MAX_CLICKS; i++) {
+      let btn = null;
+      for (let w = 0; w < 10 && !(btn = findBtn()); w++) await sleep(500);
+      if (!btn) break;
+      btn.click();
+      await sleep(1500);
+    }
+  })();
 })();
