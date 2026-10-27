@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Organizador de materias - Aula Virtual ESPOL",
+  "version": "1.0",
+  "description": "Filtra tu tablero de Canvas por materia y personaliza el color de cada una.",
+  "permissions": ["storage"],
+  "content_scripts": [
+    {
+      "matches": ["https://aulavirtual.espol.edu.ec/*"],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}
